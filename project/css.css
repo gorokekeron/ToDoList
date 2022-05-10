@@ -1,0 +1,77 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-position: center center;
+    background-repeat: no-repeat;    
+    background-image: url("./src/2_2_3_guide_map_map01.png");  /* https://daco2020.tistory.com/m/54 */
+}
+
+#main .main_middle,
+#main .main_bottom{
+    text-align: center;
+}
+#main .main_middle{
+    height:70vh;
+    margin-top:120px;
+    background: rgba(255, 255, 255, 0.603);
+}
+
+#main .main_middle #time span:first-child{
+    font-size: 70pt;
+    margin-left: 140px;
+}
+
+#main .main_middle #time span:last-child{
+    font-size: 10pt;
+}
+
+#main .main_middle #Todo input{
+    margin-top: 30px;
+    font-size: 30pt;
+    border : none;
+    border-bottom: 3px solid #F0E6B5;
+    background:rgba(0,0,0,0);
+    width: 35vw;
+}
+#main .main_middle #Todo input:focus{
+    outline : none;
+    border-bottom: 3px solid #000000;
+}
+
+#main .main_middle #quote{
+    margin: auto;
+    margin-top:50px;
+    font-family: serif;
+    font-style: italic;
+    width: 30%;
+    position : relative; /*static이 기본값인데 왜 아래의 position:absolute와 상호작용(?)이 안될까?*/
+}
+
+#main .main_middle #quote > span{
+    text-align: right;
+    position: absolute; /*https://creamilk88.tistory.com/m/197 부모중에 position 속성이 있는 요소가 없다면 <body>기준으로 top/bottom/left/right 지정됨)*/
+    right: -40px;
+}
+
+#main .main_bottom{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    width: 100vw;
+    position:absolute;
+}    
+
+#main .main_bottom #showList div{
+    width:200px;
+    height: 50px;
+    position:relative;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+#main .main_bottom .icon:hover{
+    animation: hover_motion 0.5s linear 0s infinite alternate;
+}    
+
+@keyframes hover_motion {
+	0% {margin-top: 0px;}
+	100% {margin-top: 10px;}
+}

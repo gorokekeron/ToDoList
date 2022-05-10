@@ -5,18 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TodoList</title>
+    <script src="./javascript.js"></script>
+    <link rel="stylesheet" href="./css.css">
 </head>
-<body>
+<body id="main">
+    <!--일단 고정으로 작업 ㄱㄱ-->
     <section class="main_top">
-        <div id="location"></div> <!--접속자 위도 및 주소-->
+        <div id="location">🌎 Anyang-si, Gyeonggi-do, Republic of Korea</div> <!--접속자 주소-->
     </section>
     <section class="main_middle">
-        <div id="time"></div><!--시간+도시-->
-        <div id="Todo">  </div><!--todo list 쓰는 곳-->
-        <div id="quote">  </div><!--랜덤명언-->
+        <div id="time"><span>10:01</span><span><strong>AM</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Soul,South Korea</span></div><!--시간+도시--> <!-- 시간을 중심으로 두고 싶은데 잘 모르겠다.-->
+        <div id="Todo">  
+            <form action="" method="post">
+                <input type="text" autofocus="true" placeholder="To Do..."> <!--ToDo List 쓰는 곳-->
+            </form>
+        </div><!--todo list 쓰는 곳-->
+        <div id="quote"> I think so I exist I think so I exist I think so I exist I think so I exist<br><span>-somebody </span></div><!--랜덤명언-->
     </section>
     <section class="main_bottom">
-        <div id="showList"></div><!-- myToDoList 페이지 이동-->
+        <div id="showList"><div class="icon">🔻</div></div><!-- myToDoList 페이지 이동?  modal!-->
         <div></div>
     </section>
 </body>
