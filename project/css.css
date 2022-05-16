@@ -5,14 +5,13 @@ body{
     background-repeat: no-repeat;    
     background-image: url("./src/2_2_3_guide_map_map01.png");  /* https://daco2020.tistory.com/m/54 */
 }
-
 #main .main_middle,
 #main .main_bottom{
     text-align: center;
 }
 #main .main_middle{
     height:70vh;
-    margin-top:120px;
+    margin-top:50px;
     background: rgba(255, 255, 255, 0.603);
 }
 
@@ -74,4 +73,35 @@ body{
 @keyframes hover_motion {
 	0% {margin-top: 0px;}
 	100% {margin-top: 10px;}
+}
+
+
+
+
+
+
+#modal.modal-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(31, 31, 31, 0.603);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+}
+
+#modal .modal-content {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0);
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 0px solid rgba(0,0,0,0); 
+    outline: 0;
+    -webkit-box-shadow: 0px rgb(0 0 0 / 50%); 
+    box-shadow: 0px rgb(0 0 0 / 50%);
 }

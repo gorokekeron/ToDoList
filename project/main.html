@@ -5,8 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TodoList</title>
-    <script src="./javascript.js"></script>
+    
     <link rel="stylesheet" href="./css.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="./extra/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./extra/bootstrap-3.3.2-dist/css/bootstrap.min.css">
 </head>
 <body id="main">
     <!--일단 고정으로 작업 ㄱㄱ-->
@@ -26,5 +29,12 @@
         <div id="showList"><div class="icon">🔻</div></div><!-- myToDoList 페이지 이동?  modal!-->
         <div></div>
     </section>
+
+    <section id="modal" class="modal-overlay">
+        <div class="modal-content">
+            <span style="left:10px">✖</span>
+        </div>
+    </section>
 </body>
+<script src="./javascript.js"></script>
 </html>
