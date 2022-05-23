@@ -1,6 +1,10 @@
-body{
+*{
     margin: 0;
     padding: 0;
+    font-family: '웰컴체 Regular', 'Bernard MT';
+}
+body{
+
     background-position: center center;
     background-repeat: no-repeat;    
     background-image: url("./src/2_2_3_guide_map_map01.png");  /* https://daco2020.tistory.com/m/54 */
@@ -90,7 +94,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(31, 31, 31, 0.603);
+    background: rgba(31, 31, 31, 0.788);
     backdrop-filter: blur(1.5px);
     -webkit-backdrop-filter: blur(1.5px);
     border: 1px solid red;
@@ -140,6 +144,33 @@ body{
     margin-top: 50px;
     list-style: none;
 }
+#modal .todoList #ul_list li .todo_context{
+    background-color: rgba(226, 215, 215, 0.459);
+    text-align: left;
+    margin: 15pt 30px 15pt 30px;
+    padding: 5px;
+    border-radius: 10px;
+    width: 100%;
+    font-size: 15pt;
+    overflow: hidden;
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
 #modal .todoList #ul_list li{
-    border-bottom: 2px solid gainsboro;
+    display: flex;
+    flex: 1fr 8fr 1fr;
+    text-align: center;
+    width:100%;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+
+
+
+#modal .todoList #ul_list li input,
+#modal .todoList #ul_list li i{
+    margin:auto 0;
+    transform:scale(1.5);
+
 }
