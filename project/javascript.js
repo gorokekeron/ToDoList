@@ -8,9 +8,11 @@ main_down_btn.addEventListener("click",e=>{
     modal_window.style.display = "flex";
     modal_window.animate([
         {top:"-100%", easing:"ease-out"},
+        {top:"0%"},
+        {top:"-10%"},
         {top:"0%"}
     ],
-    {duration:350}
+    {duration:500}
     )
 });
 
@@ -23,3 +25,31 @@ modal_closure.addEventListener("click",e=>{
     )
     setTimeout(()=>{modal_window.style.display="none"}, 340);
 });
+
+
+
+//시간 Date 객체
+const time_place = document.querySelector(".main_middle #time");
+settime();
+setInterval(settime,5000)
+function settime() {
+    const date = new Date();
+    let what_noon="";
+    let LocalTime="";
+    if(date.getHours()<12){
+        what_noon="AM";
+        LocalTime = date.getHours()+" : "+date.getMinutes().toString().padStart(2,0);
+    }else{
+        what_noon="PM";
+        LocalTime = (date.getHours()-12)+" : "+date.getMinutes().toString().padStart(2,0);
+    }
+    time_place.innerHTML=`<span>${LocalTime}</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<strong>${what_noon}</strong>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;GMT(어쩌구)`
+}
+
+
+//배경화면 랜덤 변경
+
+
+//명언 랜덤 변경
+
+
