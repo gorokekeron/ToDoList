@@ -50,6 +50,35 @@ function settime() {
 //배경화면 랜덤 변경
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //명언 랜덤 변경
-
-
+//https://www.quotes.net/api.php 로 api 요청함
+//https://rapidapi.com/andruxnet/api/random-famous-quotes?endpoint=53aa60e4e4b0596140341ca4 참고해볼 것

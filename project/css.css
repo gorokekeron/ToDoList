@@ -7,7 +7,8 @@ body{
 
     background-position: center center;
     background-repeat: no-repeat;    
-    background-image: url("./src/2_2_3_guide_map_map01.png");  /* https://daco2020.tistory.com/m/54 */
+    background-image: url("https://source.unsplash.com/random");  /* https://daco2020.tistory.com/m/54 */
+    background-size: cover;
 }
 
 .broadway_font{
@@ -144,7 +145,7 @@ body{
 }
 
 #modal .todoList{
-    flex:5;
+    flex:6;
     color:whitesmoke;
 }
 
@@ -155,35 +156,36 @@ body{
 
 
 #modal .todoList #ul_list{
-    width:70%;
-    left:0;
+
     margin-top: 5px;
     margin-left: 20px;
     list-style: none;
     overflow-y: scroll;
     height:75%;
+    max-width:80%;
     padding-bottom: 20px;
 }
+
+
+
+
+#modal .todoList #ul_list li{
+    display: flex;
+    margin-top:10px;
+    margin-bottom: 10px;
+    width: 95%;
+    overflow : visible;
+}
+
 #modal .todoList #ul_list li .todo_context{
     background-color: rgb(255 255 255 / 18%);
     text-align: left;
     margin: 15pt 30px 15pt 30px;
     padding: 5px;
     border-radius: 10px;
-    width: 80%;
+    width: 33em;
     font-size: 20pt;
-}
-::-webkit-scrollbar-track{background: #f1f1f1;}
-::-webkit-scrollbar-thumb{background: #f6f6f6;}
-
-
-#modal .todoList #ul_list li{
-    display: flex;
-    flex: 1fr 7fr 1fr;
-    text-align: center;
-    width:100%;
-    margin-top:10px;
-    margin-bottom: 10px;
+    flex-grow: 8;
 }
 
 
@@ -192,6 +194,8 @@ body{
 #modal .todoList #ul_list li i{
     margin:auto 0;
     transform:scale(2);
+    transform-origin: 0 0;
+    flex-grow: 1;
 }
 
 #modal .todoList #ul_list li i:hover{
