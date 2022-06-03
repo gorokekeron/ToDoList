@@ -50,18 +50,43 @@ function settime() {
 }
 
 
-//todo입력한 것을 섹션에 저장
-const input = document.querySelector("#input_Todo");
-let input_value=''
-input.addEventListener('keypress',e=>{
-    if(e.keyCode === 13){
-        localStorage.setItem("new_Todo",input.value)
-        input_value=input.value;
-        input.value="";
-        e.preventDefault();
-    }
-})
+//todo입력한 것을 섹션에 저장    https://velog.io/@dnjswn123/todo를-저장하기-localStorage
+/*
+JSON.stringify( ) 를 사용하면 된다.
+JSON.stringify() 는 자바스크립트 객체를 JSON이 읽을 수 있는 데이터로 바꾸어준다.
+JSON.parse() 를 사용한다.
+JSOn.parse() 는 JSON이 읽을 수 있는 데이터를 자바스크립트객체로 변환해준다.
 
+*/
+// const input = document.querySelector("#input_Todo");
+// let todo_list =[]
+// input.addEventListener('keypress',e=>{
+//     if(e.keyCode === 13){
+//         e.preventDefault();
+//         todo_list.push(input.value)
+//         localStorage.setItem("new_Todo",todo_list)
+//         input.value="";
+//     }
+// })
+
+
+function addEntries(){
+    const input = document.querySelector("#input_Todo");
+
+    input.addEventListener('keypress',event=>{
+        if(event.keyCode === 13){
+            event.preventDefault();
+            alert("tou")
+            
+            console.log("dkdkdkdk")
+            let existingEntries = JSON.parse(localStorage.getItem("new_Todo"));
+            if(existingEntries == null) existingEntries = [];
+        
+            existingEntries.push(input.value);
+            localStorage.setItem("new_Todo", Json.stringify(existingEntries));
+        }
+    })
+}
 
 //리스트 출력
 function write_todo(){
@@ -89,8 +114,14 @@ function write_todo(){
 
 
 //체크박스 취소선 긋기
-const checkbox = document.querySelectorAll("li input");
-//":checked"
+const checkbox = document.querySelectorAll("#ul_list li input");
+checkbox[0].addEventListener("change",e=>{
+    if(checkbox[0].checked){
+        document.getElementsByClassName("todo_context")[0].style.textDecorationLine="line-through";
+    }else{
+        document.getElementsByClassName("todo_context")[0].style.textDecorationLine="none"
+    }
+})
 
 
 //휴지통으로 todo 지우기 (삭제전 확인)
@@ -110,6 +141,9 @@ function delete_todo(event){
 
 
 
+//1. 세션의 내용을 뿌린다
+//2. 휴지통을 적용시킨다. (진짜 세션에서도 사라짐)
+//3. 취소선 핯당
 
 
 
