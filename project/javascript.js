@@ -69,66 +69,106 @@ JSOn.parse() 는 JSON이 읽을 수 있는 데이터를 자바스크립트객체
 //     }
 // })
 
-
+addEntries();
 function addEntries(){
-    const input = document.querySelector("#input_Todo");
+    const input = document.getElementById("input_Todo");
 
-    input.addEventListener('keypress',event=>{
-        if(event.keyCode === 13){
-            event.preventDefault();
-            alert("tou")
-            
-            console.log("dkdkdkdk")
+   
+    input.addEventListener('keydown',function(event){
+        if(event.keyCode == 13){
+            event.preventDefault();            
             let existingEntries = JSON.parse(localStorage.getItem("new_Todo"));
             if(existingEntries == null) existingEntries = [];
         
             existingEntries.push(input.value);
-            localStorage.setItem("new_Todo", Json.stringify(existingEntries));
+            localStorage.setItem("new_Todo", JSON.stringify(existingEntries));
+            
+            input.value=""
         }
     })
 }
 
 //리스트 출력
 function write_todo(){
+
+
+//array.forEach(element=>{cord})
+
+const loStorage = JSON.parse(localStorage.getItem("new_Todo"));
+let count_index =0;
+loStorage.forEach(element=>{
+    
     //li 생성
     const li = document.createElement("li");
-    //input 생성, li에 붙이기
+    //input 생성,
     const input = document.createElement("input")
     input.setAttribute("type","checkbox");
-    //span 생성, 클래스 붙이기 , li에 붙이기
+    input.setAttribute("onclick","clickCheck(event)")
+    //span 생성, 클래스 붙이기 
     const span =document.createElement('span');
     span.setAttribute("class","todo_context");
     //createText
-    span.append("테스트 테스트");
-    //i 생성 클래스 붙이기 li에 붙이기
+    span.append(element);
+    //i 생성 클래스 붙이기
     const i = document.createElement("i");
     i.setAttribute("class","fa-solid fa-trash-can");
     i.setAttribute("onclick","delete_todo(event)")
+    i.setAttribute("value",count_index++);
 
+    //li에 붙이기
     li.append(input,span,i);
     //ul에 li 붙이기
     ul_list.appendChild(li);
+})
 }
 
-//리스트 localSession 만큼 만들기
 
 
-//체크박스 취소선 긋기
-const checkbox = document.querySelectorAll("#ul_list li input");
-checkbox[0].addEventListener("change",e=>{
-    if(checkbox[0].checked){
-        document.getElementsByClassName("todo_context")[0].style.textDecorationLine="line-through";
+
+
+
+
+
+
+
+function clickCheck(e){ //https://velog.io/@qeiqiem/JS-onclick-...-Uncaught-TypeError-Cannot-read-properties-of-undefined-reading-target
+    const theone = e.target;
+    const thesister = theone.nextSibling
+    if(theone.checked == true){
+        thesister.style.textDecorationLine="line-through"
     }else{
-        document.getElementsByClassName("todo_context")[0].style.textDecorationLine="none"
+        thesister.style.textDecorationLine="none"
     }
-})
+}
 
 
-//휴지통으로 todo 지우기 (삭제전 확인)
+
+
+
+
+
+// //체크박스 취소선 긋기
+// const checkbox = document.querySelectorAll("#ul_list li input");
+// checkbox[0].addEventListener("change",e=>{
+//     if(checkbox[0].checked){
+//         document.getElementsByClassName("todo_context")[0].style.textDecorationLine="line-through";
+//     }else{
+//         document.getElementsByClassName("todo_context")[0].style.textDecorationLine="none"
+//     }
+// })
+
+
+//휴지통으로 todo 지우기 (삭제전 확인)      https://hogni.tistory.com/122
 function delete_todo(event){
     if(confirm("정말 삭제하겠습니까?")){
-        event.currentTarget.parentNode.remove();
-        alert("삭제되었습니다.")
+        const index = event.target.value;
+        const array1 = localStorage.getItem("new_Todo")   //json 에서 요소 삭제 하고 다시 등록????????
+
+        console.log(array.remove(index))
+        //그 인덱스를 가지고 new_Todo의 요소 삭제
+    
+        //html에서 삭제
+        // event.currentTarget.parentNode.remove();
     }
 }
 
