@@ -10,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="./extra/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/250453deb4.js" crossorigin="anonymous"></script>
+    <script src="./extra/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="./extra/bootstrap-3.3.2-dist/css/bootstrap.min.css">
 </head>
 <body id="main">
@@ -17,21 +18,20 @@
         <div class="search">
             <div class="searchBox">
                 <input type="text" name="" class="qyery" value="">
-            </div>
-        </div> 
-        <div class="icons">
-            <div><img src="./src/search.png" alt="google_search"></div>
-            <div><img src="./src/mic.png" alt="google_mic"></div>
+                 <img src="./src/search.png" alt="google_search">
+                 <img src="./src/mic.png" alt="google_mic">
         </div>
+        </div> 
+        
     </section>
     <section class="main_middle">
-        <div id="time"><span>99:99</span><span><strong>NM</strong>&nbsp;&nbsp;|&nbsp;&nbsp;City,Country</span></div><!--시간+도시--> <!-- 시간을 중심으로 두고 싶은데 잘 모르겠다.-->
+        <div id="time"><span>99:99</span><span><strong>NM</strong></div>
         <div id="Todo">  
             <form action="" method="get">
                 <input type="text" autofocus="true" placeholder="To Do..." name="todo"  id="input_Todo"> <!--ToDo List 쓰는 곳-->
             </form>
         </div><!--todo list 쓰는 곳-->
-        <div id="quote"> I think so I exist I think so I exist I think so I exist I think so I exist<br><span>-somebody </span></div><!--랜덤명언-->
+        <div id="quote"></div><!--랜덤명언-->
     </section>
     <section class="main_bottom">
         <div id="showList"><div class="icon"><i class="fa fa-angle-double-down fa-bounce"></i></div></div><!-- myToDoList 페이지 이동?  modal!-->

@@ -46,7 +46,8 @@ function settime() {
         what_noon="PM";
         LocalTime = (date.getHours()-12)+" : "+date.getMinutes().toString().padStart(2,0);
     }
-    time_place.innerHTML=`<span>${LocalTime}</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<strong>${what_noon}</strong>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;GMT(어쩌구)`
+    time_place.innerHTML=`<span>${LocalTime}</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<strong class="noon">
+    ${what_noon}</strong>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;`
 }
 
 
@@ -86,7 +87,11 @@ function write_todo(){
     const loStorage = JSON.parse(localStorage.getItem("new_Todo"));
     let count_index =0;
 
-    if(localStorage.getItem("new_Todo") != null && localStorage.getItem("new_Todo") != ""){//값 존재
+    if(localStorage.getItem("new_Todo") != null || localStorage.getItem("new_Todo") != '[]'){//값 존재
+        console.log("yes")
+        //h5 지우기
+        document.getElementsByClassName("notice_h").remove;
+
         //array.forEach(element=>{cord})
         loStorage.forEach(element=>{
         
@@ -113,17 +118,17 @@ function write_todo(){
         ul_list.appendChild(li);
         })
     }else{//값 없음
-        const h5 = document.createElement("h5");
-        h5.append("이런~ 지금은 할 일이 없어요😽")
-        h5.setAttribute("class","notice_h");
-        ul_list.appendChild(h5);
+        ul_list.appendChild(notice_nothing());
     }
 }
 
 
-
-
-
+function notice_nothing(){
+    const h5 = document.createElement("h5");
+    h5.append("이런~ 지금은 할 일이 없어요 😽")
+    h5.setAttribute("class","notice_h");
+    return h5;
+}
 
 
 
@@ -138,11 +143,6 @@ function clickCheck(e){ //https://velog.io/@qeiqiem/JS-onclick-...-Uncaught-Type
         thesister.style.textDecorationLine="none"
     }
 }
-
-
-
-
-
 
 
 // //체크박스 취소선 긋기
@@ -177,27 +177,90 @@ function delete_todo(event){
 
 //https://velog.io/@torin/javascript-event.target.value
 
-
-
-
-//1. 세션의 내용을 뿌린다
-//2. 휴지통을 적용시킨다. (진짜 세션에서도 사라짐)
-//3. 취소선 핯당
-
-
-
-
-
-
-
-
-
-
-
-
-
+quotes();
 
 
 //명언 랜덤 변경
-//https://www.quotes.net/api.php 로 api 요청함
-//https://rapidapi.com/andruxnet/api/random-famous-quotes?endpoint=53aa60e4e4b0596140341ca4 참고해볼 것
+function quotes(){
+//https://api.qwer.pw/
+
+    $.ajax({
+        url:"https://api.qwer.pw/request/helpful_text",
+        method:"GET",
+        dataType:"json",
+        data:{apikey:"guest"}
+    })
+    .done(function(json){
+        //글자 오른쪽에서 첨 발견한 - 옆에 br붙이기
+        const word = json[1].respond;
+
+        const word2 = [word.slice(0, word.lastIndexOf(word.lastIndexOf("-")==-1?"–":"-")),"<br><br>",word.slice(word.lastIndexOf(word.lastIndexOf("-")==-1?"–":"-"))].join('');
+
+
+       $("#quote").append(word2);
+    });
+}
+
+
+//도시  https://developer.mozilla.org/ko/docs/Web/API/Geolocation_API/Using_the_Geolocation_API
+function geoFindMe() {
+
+    const status = document.querySelector('#status');
+    const mapLink = document.querySelector('#map-link');
+  
+     mapLink.href = '';
+     mapLink.textContent = '';
+
+
+
+
+
+
+  
+    function success(position) {
+      const latitude  = position.coords.latitude;
+      const longitude = position.coords.longitude;
+  
+      status.textContent = '';
+      mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
+      mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
+    }
+  
+    function error() {
+      status.textContent = 'Unable to retrieve your location';
+    }
+  
+
+
+
+
+
+
+
+
+    if(!navigator.geolocation) {
+      status.textContent = 'Geolocation is not supported by your browser';
+    } else {
+      status.textContent = 'Locating…';
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+
+
+
+    document.createElement("span").setAttribute("id","find-me").innerHTML(status).after(".noon");
+
+  }
+  
+  search();
+  function search(e){
+        const searchbox = document.querySelector(".searchBox .qyery");
+      
+
+
+        searchbox.addEventListener("keypress",e=>{
+            if(e.keyCode===13){
+                e.preventDefault();
+                location.href ="http://google.com/search?q="+searchbox.value;
+            }
+        })
+  }
