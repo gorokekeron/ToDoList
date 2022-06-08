@@ -153,6 +153,11 @@ body{
     font-size: 50pt;
 }
 
+#modal .notice_h{
+    font-size: 38px;
+    margin-top: 10%;
+    position: fixed;
+}
 
 
 #modal .todoList #ul_list{
