@@ -203,55 +203,30 @@ function quotes(){
 
 
 //도시  https://developer.mozilla.org/ko/docs/Web/API/Geolocation_API/Using_the_Geolocation_API
-function geoFindMe() {
-
-    const status = document.querySelector('#status');
-    const mapLink = document.querySelector('#map-link');
-  
-     mapLink.href = '';
-     mapLink.textContent = '';
-
-
-
-
-
 
   
-    function success(position) {
-      const latitude  = position.coords.latitude;
-      const longitude = position.coords.longitude;
-  
-      status.textContent = '';
-      mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-      mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
-    }
-  
-    function error() {
-      status.textContent = 'Unable to retrieve your location';
-    }
-  
+ 
 
 
-
-
-
-
-
-
-    if(!navigator.geolocation) {
-      status.textContent = 'Geolocation is not supported by your browser';
-    } else {
-      status.textContent = 'Locating…';
-      navigator.geolocation.getCurrentPosition(success, error);
-    }
-
-
-
-    document.createElement("span").setAttribute("id","find-me").innerHTML(status).after(".noon");
-
+  //google_search 돋보기 눌르면 검색창 나옴
+  function googleIcon(){
+    //나타나는 애니메이션
+    const search_box = document.getElementsByClassName("qyery");
+    search_box.style.display="static";
+    search_box.animate([
+        {left:"-100%", easing:"ease-out"},
+        {left:"0%"},
+        ],{duration:100}
+    )
+    //완료되면 마이크도 나타남
+    //함수 달아두자
   }
-  
-  search();
+
+
+
+
+
+   
   function search(e){
         const searchbox = document.querySelector(".searchBox .qyery");
       
