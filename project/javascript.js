@@ -208,27 +208,9 @@ function quotes(){
  
 
 
-  //google_search 돋보기 눌르면 검색창 나옴
-  function googleIcon(){
-    //나타나는 애니메이션
-    const search_box = document.getElementsByClassName("qyery");
-    search_box.style.display="static";
-    search_box.animate([
-        {left:"-100%", easing:"ease-out"},
-        {left:"0%"},
-        ],{duration:100}
-    )
-    //완료되면 마이크도 나타남
-    //함수 달아두자
-  }
-
-
-
-
-
    
   function search(e){
-        const searchbox = document.querySelector(".searchBox .qyery");
+        const searchbox = document.querySelector(".searchBox .query");
       
 
 
