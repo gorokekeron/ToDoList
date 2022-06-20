@@ -16,9 +16,12 @@
 <body id="main">
     <section class="top_search">  <!--      https://homnay.tistory.com/56#google_vignette      구글 검색 만들기-->
             <span class="searchBox">
-                <input type="text" name="" class="query" value="">
-                 <img src="./src/search.png" alt="google_search" onclick="googleIcon()">
-                 <img src="./src/mic.png" alt="google_mic">
+                <form method="get" action="https://www.google.com/search">
+                    <input type="text" name="q" class="search_keyword">
+                    <input type="hidden" class="output">
+                    <img src="./src/search.png" alt="google_search" id="search_icon" onclick="submit()">
+                    <img src="./src/mic.png" alt="google_mic" id="search-mic" onclick="search_voice()">
+                </form>
             </span>
     </section>
     <section class="main_middle">
@@ -31,7 +34,7 @@
         <div id="quote"></div><!--랜덤명언-->
     </section>
     <section class="main_bottom">
-        <div id="showList"><div class="icon"><i class="fa fa-angle-double-down fa-bounce"></i></div></div><!-- myToDoList 페이지 이동?  modal!-->
+        <div id="showList"><div class="icon"><i class="fa fa-angle-double-down fa-bounce"></i></div></div>
         <div></div>
     </section>
 

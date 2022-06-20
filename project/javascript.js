@@ -20,6 +20,9 @@ main_down_btn.addEventListener("click",e=>{
 
 //모달 닫는 버튼
 modal_closure.addEventListener("click",e=>{
+    //내용물 클리어
+    document.getElementById("ul_list").innerHTML="";
+
     modal_window.animate([
         {top:"0%", easing:"ease-out"},
         {top:"-100%"}
@@ -47,7 +50,7 @@ function settime() {
         LocalTime = (date.getHours()-12)+" : "+date.getMinutes().toString().padStart(2,0);
     }
     time_place.innerHTML=`<span>${LocalTime}</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<strong class="noon">
-    ${what_noon}</strong>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;`
+    ${what_noon}</strong>`
 }
 
 
@@ -87,8 +90,8 @@ function write_todo(){
     const loStorage = JSON.parse(localStorage.getItem("new_Todo"));
     let count_index =0;
 
-    if(localStorage.getItem("new_Todo") != null || localStorage.getItem("new_Todo") != '[]'){//값 존재
-        console.log("yes")
+    if(localStorage.getItem("new_Todo") != '[]' && localStorage.getItem("new_Todo") != null ){//값 존재
+    
         //h5 지우기
         document.getElementsByClassName("notice_h").remove;
 
@@ -118,6 +121,7 @@ function write_todo(){
         ul_list.appendChild(li);
         })
     }else{//값 없음
+        console.log("값없음")
         ul_list.appendChild(notice_nothing());
     }
 }
@@ -168,6 +172,13 @@ function delete_todo(event){
      
         //html에서 삭제
         event.currentTarget.parentNode.remove();
+
+
+        //삭제하고 개수 파악, 텅 비었으면  function notice_nothing() 실행
+        if(JSON.parse(localStorage.getItem("new_Todo")).length <= 0){
+            localStorage.getItem("new_Todo").remove();
+            notice_nothing();
+        }
     }
 }
 
@@ -204,20 +215,32 @@ function quotes(){
 
 //도시  https://developer.mozilla.org/ko/docs/Web/API/Geolocation_API/Using_the_Geolocation_API
 
+  //마이크 검색
+//마이크 눌렀을때
+function search_voice(){
   
+recognition.start();
+console.log("test")
+recognition.onresult  = function(event) {
+    location.href="https://www.google.com/search?q="+event.results[0][0].transcript;
+}
+}
+
+
+const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+const SpeechGrammarList = window.SpeechGrammarList || webkitSpeechGrammarList;
+const SpeechRecognitionEvent = window.SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
  
+const recognition = new SpeechRecognition();
+const speechRecognitionList = new SpeechGrammarList();
+
+recognition.grammars = speechRecognitionList;
+recognition.continuous = false;
+recognition.lang = 'ko-KR';
+recognition.interimResults = false;
+recognition.maxAlternatives = 1;
 
 
-   
-  function search(e){
-        const searchbox = document.querySelector(".searchBox .query");
-      
 
+const diagnostic = document.querySelector('.output');
 
-        searchbox.addEventListener("keypress",e=>{
-            if(e.keyCode===13){
-                e.preventDefault();
-                location.href ="http://google.com/search?q="+searchbox.value;
-            }
-        })
-  }

@@ -46,7 +46,7 @@ body{
 
 #main .main_middle #time span:first-child{
     font-size: 70pt;
-    margin-left: 100px;
+   
 }
 
 #main .main_middle #time span:last-child{
@@ -93,7 +93,7 @@ body{
     padding-left: 30px;
 }
 
-#main .top_search .searchBox > input{
+#main .top_search .searchBox .search_keyword{
     background: rgba(250,250,250,0);
     border:none;
     border-bottom: 2px solid black;
@@ -102,17 +102,21 @@ body{
     padding-left:5px;
 }
 
-#main .top_search .searchBox > input:hover,
-#main .top_search .searchBox > input:focus{
-    background: rgba(255, 255, 255, 0.842);
+#main .top_search .searchBox .search_keyword:hover,
+#main .top_search .searchBox .search_keyword:focus{
+    background: rgba(255, 255, 255,1);
     outline:none;
-    border-bottom: 2px solid black;
-    border-radius: 5px;
+    border:none;
+    box-shadow:0px 2px 8px 1px gray;
+    border-radius: 20px;
     
 }
 
-.google_mic{
-    display: none;
+#main .top_search .searchBox #search_icon,
+#main .top_search .searchBox #search-mic{
+    cursor:pointer;
+    padding:10px 3px;
+    margin-right: 5px;
 }
 
 
