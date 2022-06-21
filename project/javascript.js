@@ -162,23 +162,33 @@ function clickCheck(e){ //https://velog.io/@qeiqiem/JS-onclick-...-Uncaught-Type
 
 //휴지통으로 todo 지우기 (삭제전 확인)      https://hogni.tistory.com/122
 function delete_todo(event){
+
+    //https://developer-talk.tistory.com/153
+   const list = JSON.parse(localStorage.getItem("new_Todo"))
     if(confirm("정말 삭제하겠습니까?")){
-        const index = event.target.dataset.value;
-         //https://developer-talk.tistory.com/153
-        const list = JSON.parse(localStorage.getItem("new_Todo"))
-        list.splice(index,1)
-      
+
+        const index = $("li").index($(event.target.parentNode))
+ 
+        list.splice(index,1); 
+
+
+
+
+
+
+
         localStorage.setItem("new_Todo",JSON.stringify(list));
-     
+
         //html에서 삭제
         event.currentTarget.parentNode.remove();
 
 
         //삭제하고 개수 파악, 텅 비었으면  function notice_nothing() 실행
         if(JSON.parse(localStorage.getItem("new_Todo")).length <= 0){
-            localStorage.getItem("new_Todo").remove();
-            notice_nothing();
+            localStorage.removeItem("new_Todo");
+            ul_list.appendChild(notice_nothing());
         }
+        
     }
 }
 

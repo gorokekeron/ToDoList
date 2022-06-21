@@ -159,9 +159,7 @@ body{
     display: flex;
 }
 
-/*크기에 따라 뮤직과 리스트 칸은 한 행에 있거나 두 행으로 나뉘어 진다. 기준은 풀 스크린
-  width:1000px 이하가 되면 넘어가도록*/
-#modal .left-music{
+#modal .left-div{
     flex:1;
 }
 
